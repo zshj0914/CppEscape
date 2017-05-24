@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{7941E8E1-4EB9-8876-F2DB-E689F4A1FC99}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "CppEscape",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
