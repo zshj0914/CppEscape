@@ -27,13 +27,31 @@ private:
 	//
 	float Reach = 100.f;
 
+	
+	FVector PlayerViewPointLocation;
+	FRotator PlayerViewPointRotation;
+
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
 
 	UInputComponent* InputComponent = nullptr;
 
+	// Ray-cast and grab what's in reach
 	void Grab();
 
+	// called when grab is released
 	void Release();
+
+
+	FVector GetReachLineEnd();
+
+	// Find attached physics handle
+	void FindPhysicsHandleComponent();
+
+	// Setup input component
+	void SetupInputComponent();
+
+	// Return hit for first physics body in reach
+	const FHitResult GetFirstPhysicsBodyInReach();
 
 		
 	
