@@ -5,6 +5,8 @@
 #include "Components/ActorComponent.h"
 #include "OpenDoor.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDoorEvent);
+
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class CPPESCAPE_API UOpenDoor : public UActorComponent
@@ -25,24 +27,33 @@ public:
 
 	float GetTotalMassOfActorsOnPlate();
 
-	void OpenDoor();
+	//void OpenDoor();
 
-	void CloseDoor();
+	//void CloseDoor();
+
+	UPROPERTY(BlueprintAssignable)
+		FDoorEvent OnOpen;
+
+	UPROPERTY(BlueprintAssignable)
+		FDoorEvent OnClose;
 
 private:
-	UPROPERTY(EditAnywhere)
-		float OpenAngle = -90.f;
+	/*UPROPERTY(EditAnywhere)
+		float OpenAngle = -90.f;*/
 
 	UPROPERTY(EditAnywhere)
-		ATriggerVolume* PressurePlate;
+		ATriggerVolume* PressurePlate = nullptr;
+
+	/*UPROPERTY(EditAnywhere)
+		float DoorCloseDelay = 1.f;*/
+
+	/*float LastDoorOpenTime;*/
 
 	UPROPERTY(EditAnywhere)
-		float DoorCloseDelay = 1.f;
+		float TriggerMass = 20.f;
 
-	float LastDoorOpenTime;
-
-	AActor* ActorThatOpens;
-	AActor* Owner;
+	AActor* ActorThatOpens = nullptr;
+	AActor* Owner = nullptr;
 
 		
 	
